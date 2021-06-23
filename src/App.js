@@ -1,23 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
-
+import PokemonItem from './components/PokemonItem';
+import searchPokemon from './services/searchPokemon';
+import { useState} from 'react';
 function App() {
+
+const  [search, setSearch] = useState('');
+const  [pokemon, setPokemon] = useState();
+
+
+const onClick = async() =>{
+
+  const data = await searchPokemon(search);
+  
+  setPokemon(data);
+  }
+
+
+
+const onChange = (e) =>{
+  setSearch(e.target.value);
+}
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+   <h1>Pokemons</h1>
+      <PokemonItem onChange={onChange}
+                  search={search}
+                  onClick ={onClick}
+                  pokemon={pokemon}/> 
     </div>
   );
 }
