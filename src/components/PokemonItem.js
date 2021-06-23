@@ -1,6 +1,5 @@
 import React from 'react';
 import './PokemonItem.css';
-import esfera from './../esfera.jpg';
 
 const PokemonItem = ({onChange, onClick, pokemon}) => {
 
@@ -33,7 +32,7 @@ const PokemonItem = ({onChange, onClick, pokemon}) => {
     </>
 } 
              <div className="input">
-                 <img src={esfera} width="48px" height="48px" />
+                 
              <input type="text" placeholder="Input of Pokemon Favorite" onChange ={onChange}/>
 
              </div>
